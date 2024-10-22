@@ -154,9 +154,9 @@ public class cadastroVIEW extends javax.swing.JFrame {
         produtosDAO.cadastrarProduto(produto);
 
         
-        JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
+        JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso");
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto: " + e.getMessage());
+        JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto!: " + e.getMessage());
     }
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
