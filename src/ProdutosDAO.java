@@ -5,6 +5,7 @@ import java.sql.Connection;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.sql.SQLException;
 
 
 public class ProdutosDAO {
@@ -27,7 +28,28 @@ public class ProdutosDAO {
         return listagem;
     }
     
+    public void venderProduto(int id) {
+    conn = new conectaDAO().connectDB(); // Conectando ao banco de dados
     
+    try {
+        String sql = "UPDATE produtos SET status = 'Vendido' WHERE id = ?";
+        prep = conn.prepareStatement(sql);
+        prep.setInt(1, id);
+
+        prep.execute();
+        JOptionPane.showMessageDialog(null, "Produto vendido com sucesso!");
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Erro ao vender produto: " + e.getMessage());
+    } finally {
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao fechar conexão: " + e.getMessage());
+        }
+    } 
+}
+
     
         
 }
